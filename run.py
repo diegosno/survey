@@ -37,3 +37,10 @@ def get_personal_data():
             break
         else:
             print('INVALID: Enter only letters')
+
+    while True:
+        last_name = input('Enter your last name: ')
+        if last_name.isalpha():
+            break
+        else:
+            print('INVALID: Enter only letters')
