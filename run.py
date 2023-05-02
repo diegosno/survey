@@ -99,3 +99,9 @@ print("Thank you. You are now being redirected to our survey page.")
 
 
 def get_survey_responses():
+    quality = input(
+        "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ")
+    try:
+        quality = int(quality)
+        if quality < 0 or quality > 5:
+            print("Please enter a number from 0 to 5.")
