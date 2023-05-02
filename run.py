@@ -111,3 +111,8 @@ def get_survey_responses():
             return quality
     except ValueError:
         print("Please enter a number.")
+
+    return get_survey_responses()
+
+
+quality, recommend, expectations, frequency, price_value, features = get_survey_responses()
