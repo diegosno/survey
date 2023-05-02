@@ -66,3 +66,6 @@ def get_personal_data():
             break
         else:
             print('INVALID: Value should be m, f, o')
+
+    while True:
+        country = input('Enter your country: ')
