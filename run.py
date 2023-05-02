@@ -52,3 +52,10 @@ def get_personal_data():
             break
         except ValueError:
             print('INVALID: Enter a number')
+
+    while True:
+        email = input('Enter your email: ')
+        if "@" in email and "." in email and email.index("@") < email.index("."):
+            break
+        else:
+            print('INVALID: Format should be example@example.com')
