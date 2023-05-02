@@ -89,10 +89,13 @@ def get_personal_data():
 
 
 # Call function to get the user's personal data
-first_name, last_name, age, email, gender, country = get_personal_data()
+# first_name, last_name, age, email, gender, country = get_personal_data()
 
 # Append the user's data to the worksheet
-worksheet.append_row([first_name, last_name, email, age, gender, country])
+# worksheet.append_row([first_name, last_name, email, age, gender, country])
 
 # display thank you message
 print("Thank you. You are now being redirected to our survey page.")
+
+
+def get_survey_responses():
