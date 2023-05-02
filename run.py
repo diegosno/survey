@@ -112,6 +112,9 @@ def get_survey_responses():
     except ValueError:
         print("Please enter a number.")
 
+    recommend = input(
+        "Would you recommend this product to others? (Enter a number from 0 to 5) ")
+
     return get_survey_responses()
 
 
