@@ -62,7 +62,7 @@ def get_personal_data():
 
     while True:
         gender = input('Enter your gender (m/f/o): ')
-        if gender.isalpha():
+        if gender in ['m', 'f', 'o']:
             break
         else:
             print('INVALID: Value should be m, f, o')
