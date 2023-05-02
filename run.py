@@ -65,7 +65,7 @@ def get_personal_data():
         if gender in ['m', 'f', 'o']:
             break
         else:
-            print('INVALID: Value should be m, f, o')
+            print('INVALID: Value should be m(masculine), f(feminine) or o(other)')
 
     while True:
         country = input('Enter your country: ')
@@ -82,4 +82,4 @@ first_name, last_name, age, email, gender, country = get_personal_data()
 worksheet.append_row([first_name, last_name, email, age, gender, country])
 
 # display thank you message
-print("Thank you, you are now being redirected to our survey page.")
+print("Thank you. You are now being redirected to our survey page.")
