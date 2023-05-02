@@ -74,9 +74,12 @@ def get_personal_data():
         else:
             print('INVALID: Enter a valid country name')
 
- return first_name, last_name, age, email, gender, country
+    return first_name, last_name, age, email, gender, country
 
 
 first_name, last_name, age, email, gender, country = get_personal_data()
 
 worksheet.append_row([first_name, last_name, email, age, gender, country])
+
+# display thank you message
+print("Thank you, you are now being redirected to our survey page.")
