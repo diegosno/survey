@@ -29,8 +29,13 @@ instructions = "Please enter your details"
 print(welcome_message)
 print(instructions)
 
+# Define function to get personal data from the user
+
 
 def get_personal_data():
+
+    # Loop until valid input is entered for each field
+    # Get user's first name
     while True:
         first_name = input('Enter your first name: ')
         if first_name.isalpha():
@@ -38,6 +43,7 @@ def get_personal_data():
         else:
             print('INVALID: Enter only letters')
 
+# Get user's last name
     while True:
         last_name = input('Enter your last name: ')
         if last_name.isalpha():
@@ -45,6 +51,7 @@ def get_personal_data():
         else:
             print('INVALID: Enter only letters')
 
+# Get user's age
     while True:
         age = input('Enter your age: ')
         try:
@@ -53,6 +60,7 @@ def get_personal_data():
         except ValueError:
             print('INVALID: Enter a number')
 
+# Get user's email
     while True:
         email = input('Enter your email: ')
         if "@" in email and "." in email and email.index("@") < email.index("."):
@@ -60,13 +68,15 @@ def get_personal_data():
         else:
             print('INVALID: Format should be example@example.com')
 
+# Get user's gender
     while True:
-        gender = input('Enter your gender (m/f/o): ')
+        gender = input('Enter your gender m(male)/f(female)/o(other)): ')
         if gender in ['m', 'f', 'o']:
             break
         else:
-            print('INVALID: Value should be m(masculine), f(feminine) or o(other)')
+            print('INVALID: Value should be m, f, or o')
 
+# Get user's country
     while True:
         country = input('Enter your country: ')
         if country.isalpha():
@@ -74,11 +84,14 @@ def get_personal_data():
         else:
             print('INVALID: Enter a valid country name')
 
+# Return the user's personal data
     return first_name, last_name, age, email, gender, country
 
 
+# Call function to get the user's personal data
 first_name, last_name, age, email, gender, country = get_personal_data()
 
+# Append the user's data to the worksheet
 worksheet.append_row([first_name, last_name, email, age, gender, country])
 
 # display thank you message
