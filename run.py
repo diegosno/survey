@@ -44,3 +44,6 @@ def get_personal_data():
             break
         else:
             print('INVALID: Enter only letters')
+
+     while True:
+        age = input('Enter your age: ')
