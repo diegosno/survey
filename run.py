@@ -105,3 +105,9 @@ def get_survey_responses():
         quality = int(quality)
         if quality < 0 or quality > 5:
             print("Please enter a number from 0 to 5.")
+
+            return get_survey_responses()
+        else:
+            return quality
+    except ValueError:
+        print("Please enter a number.")
