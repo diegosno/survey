@@ -124,7 +124,10 @@ def get_survey_responses():
     except ValueError:
         print("Please enter a number.")
 
-    expectations = input("Did the product meet your expectations?")
+    expectations = input(
+        "Did the product meet your expectations? (Enter a number from 0 to 5) ")
+    try:
+        expectations = int(expectations)
 
     return get_survey_responses()
 
