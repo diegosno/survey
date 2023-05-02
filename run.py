@@ -78,3 +78,5 @@ def get_personal_data():
 
 
 first_name, last_name, age, email, gender, country = get_personal_data()
+
+worksheet.append_row([first_name, last_name, email, age, gender, country])
