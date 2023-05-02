@@ -59,3 +59,10 @@ def get_personal_data():
             break
         else:
             print('INVALID: Format should be example@example.com')
+
+    while True:
+        gender = input('Enter your gender (m/f/o): ')
+        if gender.isalpha():
+            break
+        else:
+            print('INVALID: Value should be m, f, o')
