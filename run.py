@@ -69,3 +69,7 @@ def get_personal_data():
 
     while True:
         country = input('Enter your country: ')
+        if country.isalpha():
+            break
+        else:
+            print('INVALID: Enter a valid country name')
