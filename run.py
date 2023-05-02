@@ -114,6 +114,8 @@ def get_survey_responses():
 
     recommend = input(
         "Would you recommend this product to others? (Enter a number from 0 to 5) ")
+    try:
+        recommend = int(recommend)
 
     return get_survey_responses()
 
