@@ -132,6 +132,9 @@ def get_survey_responses():
             print("Please enter a number from 0 to 5.")
             return get_survey_responses()
         else:
+            return expectations
+    except ValueError:
+        print("Please enter a number.")
 
     return get_survey_responses()
 
