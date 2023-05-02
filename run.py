@@ -118,6 +118,13 @@ def get_survey_responses():
         recommend = int(recommend)
         if recommend < 0 or recommend > 5:
             print("Please enter a number from 0 to 5.")
+            return get_survey_responses()
+        else:
+            return recommend
+    except ValueError:
+        print("Please enter a number.")
+
+    expectations = input("Did the product meet your expectations?")
 
     return get_survey_responses()
 
