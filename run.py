@@ -45,5 +45,10 @@ def get_personal_data():
         else:
             print('INVALID: Enter only letters')
 
-     while True:
+    while True:
         age = input('Enter your age: ')
+        try:
+            age = int(age)
+            break
+        except ValueError:
+            print('INVALID: Enter a number')
