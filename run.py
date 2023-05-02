@@ -128,6 +128,8 @@ def get_survey_responses():
         "Did the product meet your expectations? (Enter a number from 0 to 5) ")
     try:
         expectations = int(expectations)
+        if expectations < 0 or expectations > 5:
+            print("Please enter a number from 0 to 5.")
 
     return get_survey_responses()
 
