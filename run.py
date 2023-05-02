@@ -116,6 +116,8 @@ def get_survey_responses():
         "Would you recommend this product to others? (Enter a number from 0 to 5) ")
     try:
         recommend = int(recommend)
+        if recommend < 0 or recommend > 5:
+            print("Please enter a number from 0 to 5.")
 
     return get_survey_responses()
 
