@@ -75,3 +75,6 @@ def get_personal_data():
             print('INVALID: Enter a valid country name')
 
  return first_name, last_name, age, email, gender, country
+
+
+first_name, last_name, age, email, gender, country = get_personal_data()
