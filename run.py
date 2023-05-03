@@ -88,6 +88,7 @@ def get_personal_data():
     return first_name, last_name, age, email, gender, country
 
 
+# Loop until data is successfully uploaded to the worksheet
 while True:
     first_name, last_name, age, email, gender, country = get_personal_data()
 
