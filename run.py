@@ -39,6 +39,7 @@ def get_personal_data():
     while True:
         first_name = input('Enter your first name:\n')
         if first_name.isalpha():
+            first_name = first_name.capitalize()
             break
         else:
             print('INVALID: Enter only letters\n')
@@ -183,5 +184,19 @@ def get_survey_results():
         else:
             print("INVALID: Please enter either very, not very, or not important.\n")
 
+    return quality, recommend, expectations, frequency, price_value, features
 
-get_survey_results()
+
+while True:
+    quality, recommend, expectations, frequency, price_value, features = get_survey_results()
+
+    try:
+        print(f"Uploading data to {worksheet2.title}...\n")
+        worksheet2.append_row(
+            [quality, recommend, expectations, frequency, price_value, features])
+        print(f"Data sent successfully to {worksheet2.title}\n")
+        break
+    except Exception as e:
+        print(
+            f"An error occurred while uploading data to {worksheet2.title}: {str(e)}\n")
+        print("Please fill out the form again. If error persists refresh.\n")
