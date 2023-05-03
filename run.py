@@ -110,36 +110,38 @@ print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 def get_survey_responses():
     survey = {'quality': None, 'recommend': None,
               'expectations': None, 'frequency': None, 'price_value': None, 'features': None}
-    questions = [{
-        'name': 'quality',
-        'question': "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ",
-        'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-    },  {
-        'name': 'recommend',
-        'question': "Would you recommend this product to others? (yes, maybe, no) ",
-        'validation': lambda x: x in ['yes', 'maybe', 'no']
-    },
+    questions = [
         {
-        'name': 'expectations',
+            'name': 'quality',
+            'question': "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ",
+            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+        },
+        {
+            'name': 'recommend',
+            'question': "Would you recommend this product to others? (yes, maybe, no) ",
+            'validation': lambda x: x in ['yes', 'maybe', 'no']
+        },
+        {
+            'name': 'expectations',
             'question': "Did the product meet your expectations? (Enter a number from 0 to 5) ",
             'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-    },
+        },
         {
-        'name': 'frequency',
+            'name': 'frequency',
             'question': "How often do you use the product? (daily, weekly, monthly) ",
             'validation': lambda x: x in ['daily', 'weekly', 'monthly']
-    },
+        },
         {
-        'name': 'price_value',
+            'name': 'price_value',
             'question': "How was the price compared to the product's value? (Enter a number from 0 to 5) ",
             'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-    },
+        },
         {
-        'name': 'features',
+            'name': 'features',
             'question': "How important were missing features in your purchase decision?(Enter a number from 0 to 5) ",
-        'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-    }]
-
+            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+        }
+    ]
     for question in questions:
         name = question['name']
         while not survey[name]:
@@ -148,9 +150,22 @@ def get_survey_responses():
                 survey[name] = answer
             else:
                 print("Please enter a valid value")
-                return [survey['quality'], survey['recommend'],
-                        survey['expectations'], survey['frequency'], survey['price_value'], survey['features']]
+    return [survey['quality'], survey['recommend'], survey['expectations'], survey['frequency'], survey['price_value'], survey['features']]
 
 
 responses = get_survey_responses()
-quality, recommend, expectations, frequency, price_value, features = responses
+
+# Loop until data is successfully uploaded to the worksheet
+while True:
+    quality, recommend, expectations, frequency, price_value, features = get_survey_responses()
+
+    try:
+        print(f"Uploading data to {worksheet2.title}...\n")
+        worksheet2.append_row(
+            [quality, recommend, expectations, frequency, price_value, features])
+        print(f"Data sent successfully to {worksheet2.title}\n")
+        break
+    except Exception as e:
+        print(
+            f"An error occurred while uploading data to {worksheet2.title}: {str(e)}\n")
+        print("Please fill out the form again.\n")
