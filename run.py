@@ -89,54 +89,65 @@ def get_personal_data():
 
 
 # Call function to get the user's personal data
-# first_name, last_name, age, email, gender, country = get_personal_data()
+first_name, last_name, age, email, gender, country = get_personal_data()
 
-# Append the user's data to the worksheet
-# worksheet.append_row([first_name, last_name, email, age, gender, country])
+print(f"Uploading data to {worksheet.title}...\n")
+worksheet.append_row([first_name, last_name, email, age, gender, country])
+print(f"Data sent successfully to {worksheet.title}\n")
 
 # display thank you message
-print("Thank you. You are now being redirected to our survey page.")
+print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 
 
 def get_survey_responses():
-    quality = input(
-        "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ")
-    try:
-        quality = int(quality)
-        if quality < 0 or quality > 5:
-            print("Please enter a number from 0 to 5.")
+    survey = {'quality': None, 'recommend': None,
+              'expectations': None, 'frequency': None, 'price_value': None, 'features': None}
+    questions = [
+        {
+            'name': 'quality',
+            'question': "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ",
+            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+        },
+        {
+            'name': 'recommend',
+            'question': "Would you recommend this product to others? (yes, maybe, no) ",
+            'validation': lambda x: x in ['yes', 'maybe', 'no']
+        },
+        {
+            'name': 'expectations',
+            'question': "Did the product meet your expectations? (Enter a number from 0 to 5) ",
+            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+        },
+        {
+            'name': 'frequency',
+            'question': "How often do you use the product? (daily, weekly, monthly) ",
+            'validation': lambda x: x in ['daily', 'weekly', 'monthly']
+        },
+        {
+            'name': 'price_value',
+            'question': "How was the price compared to the product's value? (Enter a number from 0 to 5) ",
+            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+        },
+        {
+            'name': 'features',
+            'question': "How important were missing features in your purchase decision?(Enter a number from 0 to 5) ",
+            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+        }
+    ]
+    for question in questions:
+        name = question['name']
+        while not survey[name]:
+            answer = input(question['question'])
+            if question['validation'](answer):
+                survey[name] = answer
+            else:
+                print("Please enter a valid value")
+    return [survey['quality'], survey['recommend'], survey['expectations'], survey['frequency'], survey['price_value'], survey['features']]
 
-            return get_survey_responses()
-        else:
-            return quality
-    except ValueError:
-        print("Please enter a number.")
 
-    recommend = input(
-        "Would you recommend this product to others? (Enter a number from 0 to 5) ")
-    try:
-        recommend = int(recommend)
-        if recommend < 0 or recommend > 5:
-            print("Please enter a number from 0 to 5.")
-            return get_survey_responses()
-        else:
-            return recommend
-    except ValueError:
-        print("Please enter a number.")
+responses = get_survey_responses()
+quality, recommend, expectations, frequency, price_value, features = responses
 
-    expectations = input(
-        "Did the product meet your expectations? (Enter a number from 0 to 5) ")
-    try:
-        expectations = int(expectations)
-        if expectations < 0 or expectations > 5:
-            print("Please enter a number from 0 to 5.")
-            return get_survey_responses()
-        else:
-            return expectations
-    except ValueError:
-        print("Please enter a number.")
-
-    return get_survey_responses()
-
-
-quality, recommend, expectations, frequency, price_value, features = get_survey_responses()
+print(f"Uploading data to {worksheet2.title}...\n")
+worksheet2.append_row(responses)
+print(f"Data sent successfully to {worksheet2.title} \n")
