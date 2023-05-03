@@ -114,5 +114,6 @@ def get_survey_responses():
         'name': 'quality',
         'question': "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ",
         'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-    }
-    },
+    },  {
+            'name': 'recommend',
+            'question': "Would you recommend this product to others? (yes, maybe, no) ",
