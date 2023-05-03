@@ -110,14 +110,17 @@ print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 def get_survey_results():
 
     # question 1
-    quality = input("How satisfied are you with the product's quality? (1-5)")
-    if quality.isdigit() and 1 <= int(quality) <= 5:
-        if quality == "5":
-            print("We are glad to hear!")
+    while True:
+        quality = input(
+            "How satisfied are you with the product's quality? (1-5) ")
+        if quality.isdigit() and 1 <= int(quality) <= 5:
+            if quality == "5":
+                print("We are glad to hear!")
+            else:
+                print("We will do better!")
+            break
         else:
-            print("We will do better!")
-    else:
-        print("Please enter a number between 1 and 5")
+            print("Please enter a number between 1 and 5.")
 
 
 get_survey_results()
