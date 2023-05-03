@@ -143,7 +143,7 @@ def get_survey_results():
         expectations = input("Did the product meet your expectations? (1-5)\n")
         if expectations.isdigit() and 1 <= int(expectations) <= 5:
             if expectations == "5":
-                print("We are glad to hear!\n")
+                print("We are glad to hear that!\n")
             elif recommend in ["3", "4"]:
                 print("We will do better!\n")
             else:
@@ -164,8 +164,12 @@ def get_survey_results():
     # Question 5
     while True:
         price_value = input(
-            "How was the price compared to the product's value? (excellent, good, bad\n")
-        if price_value.lower() in ['excellent', 'good', 'bad']:
+            "How was the price compared to the product's value? (excellent, good, bad)\n")
+        if price_value.lower() in ['excellent', 'good']:
+            print("We're glad to hear that!\n")
+            break
+        elif price_value.lower() == 'bad':
+            print("Sad to hear! Contact us so we find a solution.\n")
             break
         else:
             print("INVALID: Please enter either excellent, good, or bad.\n")
@@ -173,7 +177,7 @@ def get_survey_results():
     # Question 6
     while True:
         features = input(
-            "How important were missing features in your purchase decision? (very, not very, not important\n")
+            "How important were missing features in your purchase decision? (very, not very, not important)\n")
         if features.lower() in ['very', 'not very', 'not important']:
             break
         else:
