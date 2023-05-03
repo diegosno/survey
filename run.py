@@ -1,6 +1,7 @@
 # Import required libraries
 import gspread
 from google.oauth2.service_account import Credentials
+from tkinter import *
 
 # Define API access scopes
 SCOPE = [
@@ -58,7 +59,7 @@ def get_personal_data():
         age = input('Enter your age:\n')
         try:
             age = int(age)
-            if age not in range(18, 120):
+            if age not in range(18, 121):
                 print('INVALID: Enter an age between 18 and 120\n')
                 continue
             break
@@ -94,7 +95,7 @@ def get_personal_data():
     return first_name, last_name, age, email, gender, country
 
 
-# Loop until data is successfully uploaded to the worksheet
+# Loop until personal data is successfully uploaded to the worksheet
 while True:
     first_name, last_name, age, email, gender, country = get_personal_data()
 
@@ -114,7 +115,7 @@ while True:
 print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 
 
-def get_survey_results():
+def get_survey_responses():
 
    # Question 1
     while True:
@@ -129,7 +130,7 @@ def get_survey_results():
                 print("Sad to hear! Contact us so we find a solution.\n")
             break
         else:
-            print("INVALID: Enter a valid number\n")
+            print("INVALID: Enter a valid number between 1 and 5.\n")
 
     # Question 2
     while True:
@@ -142,7 +143,7 @@ def get_survey_results():
             print("Sad to hear! Contact us so we find a solution.\n")
             break
         else:
-            print("INVALID: Answer must be Yes or No\n")
+            print("INVALID: Answer must be Yes or No.\n")
 
     # Question 3
     while True:
@@ -156,7 +157,7 @@ def get_survey_results():
                 print("Sad to hear! Contact us so we find a solution.\n")
             break
         else:
-            print("INVALID: Enter a valid number\n")
+            print("INVALID: Enter a valid number between 1 and 5.\n")
 
     # Question 4
     while True:
@@ -193,8 +194,10 @@ def get_survey_results():
     return quality, recommend, expectations, frequency, price_value, features
 
 
+# Loop until survey responses is successfully uploaded to the worksheet
+
 while True:
-    quality, recommend, expectations, frequency, price_value, features = get_survey_results()
+    quality, recommend, expectations, frequency, price_value, features = get_survey_responses()
 
     try:
         print(f"Uploading data to {worksheet2.title}...\n")
@@ -206,3 +209,6 @@ while True:
         print(
             f"An error occurred while uploading data to {worksheet2.title}: {str(e)}\n")
         print("Please fill out the form again. If error persists refresh.\n")
+
+# Display goodbye message
+print(f"Thank you {first_name}. We appreciate your feedback\n")
