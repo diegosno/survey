@@ -108,3 +108,4 @@ print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 
 
 def get_survey_results():
+    quality = input("How satisfied are you with the product's quality? (1-5)")
