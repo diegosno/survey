@@ -102,3 +102,9 @@ while True:
         print(
             f"An error occurred while uploading data to {worksheet.title}: {str(e)}\n")
         print("Please fill out the form again.\n")
+
+# display thank you message
+print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
+
+
+def get_survey_responses():
