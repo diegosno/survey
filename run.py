@@ -117,3 +117,5 @@ def get_survey_responses():
     },  {
             'name': 'recommend',
             'question': "Would you recommend this product to others? (yes, maybe, no) ",
+            'validation': lambda x: x in ['yes', 'maybe', 'no']
+        },
