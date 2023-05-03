@@ -132,3 +132,5 @@ def get_survey_responses():
     {
             'name': 'price_value',
             'question': "How was the price compared to the product's value? (Enter a number from 0 to 5) ",
+            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+        },
