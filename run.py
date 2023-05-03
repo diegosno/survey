@@ -148,3 +148,4 @@ def get_survey_responses():
                 survey[name] = answer
             else:
                 print("Please enter a valid value")
+                return [survey['quality'], survey['recommend'],
