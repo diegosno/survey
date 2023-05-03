@@ -93,3 +93,4 @@ first_name, last_name, age, email, gender, country = get_personal_data()
 
 print(f"Uploading data to {worksheet.title}...\n")
 worksheet.append_row([first_name, last_name, email, age, gender, country])
+print(f"Data sent successfully to {worksheet.title}\n")
