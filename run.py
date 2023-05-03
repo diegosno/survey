@@ -144,3 +144,5 @@ def get_survey_responses():
         name = question['name']
         while not survey[name]:
             answer = input(question['question'])
+            if question['validation'](answer):
+                survey[name] = answer
