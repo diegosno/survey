@@ -141,3 +141,6 @@ def get_survey_responses():
     }]
 
     for question in questions:
+        name = question['name']
+        while not survey[name]:
+            answer = input(question['question'])
