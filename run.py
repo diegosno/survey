@@ -150,3 +150,6 @@ def get_survey_responses():
                 print("Please enter a valid value")
                 return [survey['quality'], survey['recommend'],
                         survey['expectations'], survey['frequency'], survey['price_value'], survey['features']]
+
+
+responses = get_survey_responses()
