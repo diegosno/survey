@@ -159,7 +159,18 @@ def get_survey_results():
         if frequency.lower() in ['daily', 'weekly', 'monthly']:
             break
         else:
-            print("INVALID: Please enter either daily, weekly, or monthly.")
+            print("INVALID: Please enter either daily, weekly, or monthly.\n")
+
+    # Question 5
+    while True:
+        price_value = input(
+            "How was the price compared to the product's value? (excellent, good, bad\n")
+        if price_value.lower() in ['excellent', 'good', 'bad']:
+            break
+        else:
+            print("INVALID: Please enter either excellent, good, or bad.\n")
+
+    # Question 6
 
 
 get_survey_results()
