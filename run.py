@@ -140,7 +140,17 @@ def get_survey_results():
 
     # Question 3
     while True:
-        recommend = input("Did the product meet your expectations? (1-5)")
+        recommend = input("Did the product meet your expectations? (1-5)\n")
+        if recommend.isdigit() and 1 <= int(recommend) <= 5:
+            if recommend == "5":
+                print("We are glad to hear!\n")
+            elif recommend in ["3", "4"]:
+                print("We will do better!\n")
+            else:
+                print("Sad to hear! Contact us so we find a solution.\n")
+            break
+        else:
+            print("INVALID: Enter a valid number\n")
 
 
 get_survey_results()
