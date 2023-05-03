@@ -88,13 +88,16 @@ def get_personal_data():
     return first_name, last_name, age, email, gender, country
 
 
-# Call function to get the user's personal data
-first_name, last_name, age, email, gender, country = get_personal_data()
+while True:
+    first_name, last_name, age, email, gender, country = get_personal_data()
 
-try:
-    print(f"Uploading data to {worksheet.title}...\n")
-    worksheet.append_row([first_name, last_name, email, age, gender, country])
-    print(f"Data sent successfully to {worksheet.title}\n")
-except Exception as e:
-    print(
-        f"An error occurred while uploading data to {worksheet.title}: {str(e)}\n")
+    try:
+        print(f"Uploading data to {worksheet.title}...\n")
+        worksheet.append_row(
+            [first_name, last_name, email, age, gender, country])
+        print(f"Data sent successfully to {worksheet.title}\n")
+        break
+    except Exception as e:
+        print(
+            f"An error occurred while uploading data to {worksheet.title}: {str(e)}\n")
+        print("Please fill out the form again.\n")
