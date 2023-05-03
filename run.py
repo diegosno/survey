@@ -137,3 +137,5 @@ def get_survey_responses():
      {
             'name': 'features',
             'question': "How important were missing features in your purchase decision?(Enter a number from 0 to 5) ",
+             'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+        }
