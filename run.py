@@ -119,3 +119,6 @@ def get_survey_responses():
             'question': "Would you recommend this product to others? (yes, maybe, no) ",
             'validation': lambda x: x in ['yes', 'maybe', 'no']
         },
+    {
+            'name': 'expectations',
+            'question': "Did the product meet your expectations? (Enter a number from 0 to 5) ",
