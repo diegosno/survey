@@ -124,3 +124,6 @@ def get_survey_responses():
             'question': "Did the product meet your expectations? (Enter a number from 0 to 5) ",
             'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
         },
+    {
+            'name': 'frequency',
+            'question': "How often do you use the product? (daily, weekly, monthly) ",
