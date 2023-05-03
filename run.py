@@ -153,3 +153,4 @@ def get_survey_responses():
 
 
 responses = get_survey_responses()
+quality, recommend, expectations, frequency, price_value, features = responses
