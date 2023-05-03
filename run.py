@@ -129,3 +129,6 @@ def get_survey_responses():
             'question': "How often do you use the product? (daily, weekly, monthly) ",
             'validation': lambda x: x in ['daily', 'weekly', 'monthly']
         },
+    {
+            'name': 'price_value',
+            'question': "How was the price compared to the product's value? (Enter a number from 0 to 5) ",
