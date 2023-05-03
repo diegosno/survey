@@ -140,9 +140,9 @@ def get_survey_results():
 
     # Question 3
     while True:
-        recommend = input("Did the product meet your expectations? (1-5)\n")
-        if recommend.isdigit() and 1 <= int(recommend) <= 5:
-            if recommend == "5":
+        expectations = input("Did the product meet your expectations? (1-5)\n")
+        if expectations.isdigit() and 1 <= int(expectations) <= 5:
+            if expectations == "5":
                 print("We are glad to hear!\n")
             elif recommend in ["3", "4"]:
                 print("We will do better!\n")
@@ -151,6 +151,15 @@ def get_survey_results():
             break
         else:
             print("INVALID: Enter a valid number\n")
+
+    # Question 4
+    while True:
+        frequency = input(
+            "How often do you use the product? (daily, weekly, monthly)\n")
+        if frequency.lower() in ['daily', 'weekly', 'monthly']:
+            break
+        else:
+            print("INVALID: Please enter either daily, weekly, or monthly.")
 
 
 get_survey_results()
