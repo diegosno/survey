@@ -1,7 +1,7 @@
 # Import required libraries
 import gspread
 from google.oauth2.service_account import Credentials
-from tkinter import *
+
 
 # Define API access scopes
 SCOPE = [
