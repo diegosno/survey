@@ -127,3 +127,5 @@ def get_survey_responses():
     {
             'name': 'frequency',
             'question': "How often do you use the product? (daily, weekly, monthly) ",
+            'validation': lambda x: x in ['daily', 'weekly', 'monthly']
+        },
