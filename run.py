@@ -22,8 +22,8 @@ worksheet = SHEET.worksheet('Personal Data')
 worksheet2 = SHEET.worksheet('Survey Responses')
 
 # Define welcome page strings
-welcome_message = "Welcome to our product's survey"
-instructions = "Please enter your details"
+welcome_message = "Welcome to our product's survey\n"
+instructions = "Please enter your details\n"
 
 # Print the welcome message to the console
 print(welcome_message)
@@ -37,52 +37,52 @@ def get_personal_data():
     # Loop until valid input is entered for each field
     # Get user's first name
     while True:
-        first_name = input('Enter your first name: ')
+        first_name = input('Enter your first name:\n')
         if first_name.isalpha():
             break
         else:
-            print('INVALID: Enter only letters')
+            print('INVALID: Enter only letters\n')
 
 # Get user's last name
     while True:
-        last_name = input('Enter your last name: ')
+        last_name = input('Enter your last name:\n')
         if last_name.isalpha():
             break
         else:
-            print('INVALID: Enter only letters')
+            print('INVALID: Enter only letters\n')
 
 # Get user's age
     while True:
-        age = input('Enter your age: ')
+        age = input('Enter your age:\n')
         try:
             age = int(age)
             break
         except ValueError:
-            print('INVALID: Enter a number')
+            print('INVALID: Enter a number\n')
 
 # Get user's email
     while True:
-        email = input('Enter your email: ')
+        email = input('Enter your email:\n')
         if "@" in email and "." in email and email.index("@") < email.index("."):
             break
         else:
-            print('INVALID: Format should be example@example.com')
+            print('INVALID: Format should be example@example.com\n')
 
 # Get user's gender
     while True:
-        gender = input('Enter your gender m(male)/f(female)/o(other)): ')
+        gender = input('Enter your gender m(male)/f(female)/o(other)):\n')
         if gender in ['m', 'f', 'o']:
             break
         else:
-            print('INVALID: Value should be m, f, or o')
+            print('INVALID: Value should be m, f, or o\n')
 
 # Get user's country
     while True:
-        country = input('Enter your country: ')
+        country = input('Enter your country:\n')
         if country.isalpha():
             break
         else:
-            print('INVALID: Enter a valid country name')
+            print('INVALID: Enter a valid country name\n')
 
 # Return the user's personal data
     return first_name, last_name, age, email, gender, country
@@ -101,71 +101,10 @@ while True:
     except Exception as e:
         print(
             f"An error occurred while uploading data to {worksheet.title}: {str(e)}\n")
-        print("Please fill out the form again.\n")
+        print("Please fill out the form again. If error persists refresh.\n")
 
 # display thank you message
 print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 
 
-def get_survey_responses():
-    survey = {'quality': None, 'recommend': None,
-              'expectations': None, 'frequency': None, 'price_value': None, 'features': None}
-    questions = [
-        {
-            'name': 'quality',
-            'question': "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ",
-            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-        },
-        {
-            'name': 'recommend',
-            'question': "Would you recommend this product to others? (yes, maybe, no) ",
-            'validation': lambda x: x in ['yes', 'maybe', 'no']
-        },
-        {
-            'name': 'expectations',
-            'question': "Did the product meet your expectations? (Enter a number from 0 to 5) ",
-            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-        },
-        {
-            'name': 'frequency',
-            'question': "How often do you use the product? (daily, weekly, monthly) ",
-            'validation': lambda x: x in ['daily', 'weekly', 'monthly']
-        },
-        {
-            'name': 'price_value',
-            'question': "How was the price compared to the product's value? (Enter a number from 0 to 5) ",
-            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-        },
-        {
-            'name': 'features',
-            'question': "How important were missing features in your purchase decision?(Enter a number from 0 to 5) ",
-            'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
-        }
-    ]
-    for question in questions:
-        name = question['name']
-        while not survey[name]:
-            answer = input(question['question'])
-            if question['validation'](answer):
-                survey[name] = answer
-            else:
-                print("Please enter a valid value")
-    return [survey['quality'], survey['recommend'], survey['expectations'], survey['frequency'], survey['price_value'], survey['features']]
-
-
-responses = get_survey_responses()
-
-# Loop until data is successfully uploaded to the worksheet
-while True:
-    quality, recommend, expectations, frequency, price_value, features = get_survey_responses()
-
-    try:
-        print(f"Uploading data to {worksheet2.title}...\n")
-        worksheet2.append_row(
-            [quality, recommend, expectations, frequency, price_value, features])
-        print(f"Data sent successfully to {worksheet2.title}\n")
-        break
-    except Exception as e:
-        print(
-            f"An error occurred while uploading data to {worksheet2.title}: {str(e)}\n")
-        print("Please fill out the form again.\n")
+def get_survey_results():
