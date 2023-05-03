@@ -128,15 +128,19 @@ def get_survey_results():
     # Question 2
     while True:
         recommend = input(
-            "Would you recommend this product to others? (Yes/No)")
+            "Would you recommend this product to others? (Yes/No)\n")
         if recommend.lower() == 'yes':
             print("Awesome!")
             break
         elif recommend.lower() == 'no':
-            print("Sad to hear! Contact us so we find a solution.")
+            print("Sad to hear! Contact us so we find a solution.\n")
             break
         else:
-            print("INVALID: Answer must be Yes or No")
+            print("INVALID: Answer must be Yes or No\n")
+
+    # Question 3
+    while True:
+        recommend = input("Did the product meet your expectations? (1-5)")
 
 
 get_survey_results()
