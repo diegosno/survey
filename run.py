@@ -146,3 +146,5 @@ def get_survey_responses():
             answer = input(question['question'])
             if question['validation'](answer):
                 survey[name] = answer
+            else:
+                print("Please enter a valid value")
