@@ -110,3 +110,4 @@ print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 def get_survey_responses():
     survey = {'quality': None, 'recommend': None,
               'expectations': None, 'frequency': None, 'price_value': None, 'features': None}
+    questions = [
