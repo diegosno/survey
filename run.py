@@ -103,13 +103,14 @@ while True:
             f"An error occurred while uploading data to {worksheet.title}: {str(e)}\n")
         print("Please fill out the form again. If error persists refresh.\n")
 
-# display thank you message
+
+# Display thank you message
 print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 
 
 def get_survey_results():
 
-   # question 1
+   # Question 1
     while True:
         quality = input(
             "How satisfied are you with the product's quality? (1-5)\n")
@@ -119,10 +120,23 @@ def get_survey_results():
             elif quality in ["3", "4"]:
                 print("We will do better!\n")
             else:
-                print("Very sad to hear! Please contact us so we can find a solution.\n")
+                print("Sad to hear! Contact us so we find a solution.\n")
             break
         else:
-            print("Please enter a number between 1 and 5.\n")
+            print("INVALID: Enter a valid number\n")
+
+    # Question 2
+    while True:
+        recommend = input(
+            "Would you recommend this product to others? (Yes/No)")
+        if recommend.lower() == 'yes':
+            print("Awesome!")
+            break
+        elif recommend.lower() == 'no':
+            print("Sad to hear! Contact us so we find a solution.")
+            break
+        else:
+            print("INVALID: Answer must be Yes or No")
 
 
 get_survey_results()
