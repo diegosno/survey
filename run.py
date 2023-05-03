@@ -111,7 +111,10 @@ def get_survey_results():
 
     # question 1
     quality = input("How satisfied are you with the product's quality? (1-5)")
-    if quality == "5":
-        print("We are glad to hear!")
+    if quality.isdigit() and 1 <= int(quality) <= 5:
+        if quality == "5":
+            print("We are glad to hear!")
+        else:
+            print("We will do better!")
     else:
-        print("We will do better!")
+        print("Please enter a number between 1 and 5")
