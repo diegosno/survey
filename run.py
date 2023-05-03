@@ -111,6 +111,8 @@ def get_survey_responses():
     survey = {'quality': None, 'recommend': None,
               'expectations': None, 'frequency': None, 'price_value': None, 'features': None}
     questions = [{
-            'name': 'quality',
-            'question': "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ",
+        'name': 'quality',
+        'question': "How satisfied are you with the product's quality? (Enter a number from 0 to 5) ",
+        'validation': lambda x: x.isdigit() and 0 <= int(x) <= 5
+    }
     },
