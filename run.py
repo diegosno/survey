@@ -34,7 +34,10 @@ print(instructions)
 
 
 def get_personal_data():
-
+    """
+    Prompts the user to enter personal data. 
+    Returns a dictionary containing first_name, last_name, age, email, gender, country.
+    """
     # Loop until valid input is entered for each field
     # Get user's first name
     while True:
@@ -97,6 +100,9 @@ def get_personal_data():
 
 # Loop until personal data is successfully uploaded to the worksheet
 while True:
+    """
+    Uploads personal data to a specified worksheet in Google Sheets.
+    """
     first_name, last_name, age, email, gender, country = get_personal_data()
 
     try:
@@ -116,7 +122,10 @@ print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 
 
 def get_survey_responses():
-
+    """
+    Prompts the user to answer the survey questions. 
+    Returns data as a dictionary.
+    """
    # Question 1
     while True:
         quality = input(
@@ -197,6 +206,9 @@ def get_survey_responses():
 # Loop until survey responses is successfully uploaded to the worksheet
 
 while True:
+    """
+    Uploads survey responses to specified worksheet in Google Sheets.
+    """
     quality, recommend, expectations, frequency, price_value, features = get_survey_responses()
 
     try:
@@ -211,4 +223,5 @@ while True:
         print("Please fill out the form again. If error persists refresh.\n")
 
 # Display goodbye message
+
 print(f"Thank you {first_name}. We appreciate your feedback\n")
