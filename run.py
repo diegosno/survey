@@ -48,6 +48,7 @@ def get_personal_data():
     while True:
         last_name = input('Enter your last name:\n')
         if last_name.isalpha():
+            last_name = last_name.capitalize()
             break
         else:
             print('INVALID: Enter only letters\n')
