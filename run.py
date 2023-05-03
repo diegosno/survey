@@ -118,3 +118,6 @@ def get_survey_results():
             print("We will do better!")
     else:
         print("Please enter a number between 1 and 5")
+
+
+get_survey_results()
