@@ -58,6 +58,9 @@ def get_personal_data():
         age = input('Enter your age:\n')
         try:
             age = int(age)
+            if age not in range(18, 120):
+                print('INVALID: Enter an age between 18 and 120\n')
+                continue
             break
         except ValueError:
             print('INVALID: Enter a number\n')
@@ -147,7 +150,7 @@ def get_survey_results():
         if expectations.isdigit() and 1 <= int(expectations) <= 5:
             if expectations == "5":
                 print("We are glad to hear that!\n")
-            elif recommend in ["3", "4"]:
+            elif expectations in ["3", "4"]:
                 print("We will do better!\n")
             else:
                 print("Sad to hear! Contact us so we find a solution.\n")
@@ -180,11 +183,12 @@ def get_survey_results():
     # Question 6
     while True:
         features = input(
-            "How important were missing features in your purchase decision? (very, not very, not important)\n")
-        if features.lower() in ['very', 'not very', 'not important']:
+            "How important were missing features in your purchase decision? (very important, not very important, not important)\n")
+        if features.lower() in ['very important', 'not very important', 'not important']:
             break
         else:
-            print("INVALID: Please enter either very, not very, or not important.\n")
+            print(
+                "INVALID: Please enter either very important, not very important, or not important.\n")
 
     return quality, recommend, expectations, frequency, price_value, features
 
