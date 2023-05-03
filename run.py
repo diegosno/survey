@@ -171,6 +171,13 @@ def get_survey_results():
             print("INVALID: Please enter either excellent, good, or bad.\n")
 
     # Question 6
+    while True:
+        features = input(
+            "How important were missing features in your purchase decision? (very, not very, not important\n")
+        if features.lower() in ['very', 'not very', 'not important']:
+            break
+        else:
+            print("INVALID: Please enter either very, not very, or not important.\n")
 
 
 get_survey_results()
