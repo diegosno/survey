@@ -41,59 +41,62 @@ def get_personal_data():
     """
     # Loop until valid input is entered for each field
     # Get user's first name
+    first_name = input('Enter your first name:\n')
     while True:
-        first_name = input('Enter your first name:\n')
-        if first_name.isalpha():
-            first_name = first_name.capitalize()
-            break
+        if not first_name.isalpha():
+            print('INVALID: Enter only letters')
+            first_name = input()
         else:
-            print('INVALID: Enter only letters\n')
+            break
+    first_name = first_name.capitalize()
 
 # Get user's last name
+    last_name = input('Enter your last name:\n')
     while True:
-        last_name = input('Enter your last name:\n')
-        if last_name.isalpha():
-            last_name = last_name.capitalize()
-            break
+        if not last_name.isalpha():
+            print('INVALID: Enter only letters')
+            last_name = input()
         else:
-            print('INVALID: Enter only letters\n')
+            break
+    last_name = last_name.capitalize()
 
 # Get user's age
+    age = input('Enter your age:\n')
     while True:
-        age = input('Enter your age:\n')
-        try:
+        if age.isdigit() and int(age) in range(18, 121):
             age = int(age)
-            if age not in range(18, 121):
-                print('INVALID: Enter an age between 18 and 120\n')
-                continue
             break
-        except ValueError:
-            print('INVALID: Enter a number\n')
+        else:
+            print('INVALID: Enter an age between 18 and 120')
+            age = input()
 
 # Get user's email
+    email = input('Enter your email:\n')
     while True:
-        email = input('Enter your email:\n')
         if "@" in email and "." in email and email.index("@") < email.index("."):
             break
         else:
-            print('INVALID: Format should be example@example.com\n')
+            print('INVALID: Format should be example@example.com')
+            email = input()
 
 # Get user's gender
+    gender = input('Enter your gender (woman/man/other):\n').lower()
     while True:
-        gender = input('Enter your gender (woman/man/other):\n').lower()
         if gender in ['woman', 'man', 'other']:
             break
         else:
             print('INVALID: Value should be woman, man, or other\n')
+            gender = input().lower()
 
 # Get user's country
+    country = input('Enter your country:\n')
     while True:
-        country = input('Enter your country:\n')
         if country.isalpha():
             country = country.capitalize()
             break
         else:
             print('INVALID: Enter a valid country name\n')
+            country = input()
 
 # Return the user's personal data
     return first_name, last_name, age, email, gender, country
@@ -125,7 +128,11 @@ print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 time.sleep(3)
 os.system('cls' if os.name == 'nt' else 'clear')
 
+# Survey message
+print(f"Thank you {first_name}. Please complete the following survey:\n")
 
+
+# Define function to get survey responses
 def get_survey_responses():
     """
     Prompts the user to answer the survey questions. 
