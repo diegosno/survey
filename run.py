@@ -3,6 +3,7 @@ import gspread
 from google.oauth2.service_account import Credentials
 import os
 import time
+import random
 
 
 # Define API access scopes
@@ -106,7 +107,6 @@ def get_personal_data():
 print(welcome)
 print(main_message)
 
-
 user_input = input().lower()
 
 while user_input not in ["client", "employee"]:
@@ -116,7 +116,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 if user_input == "client":
     first_name, last_name, age, email, gender, country = get_personal_data()
 elif user_input == "employee":
-    access_data()
+    employee_login()
 
 
 # Loop until personal data is successfully uploaded to the worksheet
@@ -138,15 +138,7 @@ while True:
 
 
 # Display thank you message
-print(
-    ######## ##     ##    ###    ##    ## ##    ##  ######     ########  #######  ########     ##    ##  #######  ##     ## ########     ######## #### ##     ## ######## ####
-    ##    ##     ##   ## ##   ###   ## ##   ##  ##    ##    ##       ##     ## ##     ##     ##  ##  ##     ## ##     ## ##     ##       ##     ##  ###   ### ##       ####
-    ##    ##     ##  ##   ##  ####  ## ##  ##   ##          ##       ##     ## ##     ##      ####   ##     ## ##     ## ##     ##       ##     ##  #### #### ##       ####
-    ##    ######### ##     ## ## ## ## #####     ######     ######   ##     ## ########        ##    ##     ## ##     ## ########        ##     ##  ## ### ## ######    ##
-    ##    ##     ## ######### ##  #### ##  ##         ##    ##       ##     ## ##   ##         ##    ##     ## ##     ## ##   ##         ##     ##  ##     ## ##
-    ##    ##     ## ##     ## ##   ### ##   ##  ##    ##    ##       ##     ## ##    ##        ##    ##     ## ##     ## ##    ##        ##     ##  ##     ## ##       ####
-    ##    ##     ## ##     ## ##    ## ##    ##  ######     ##        #######  ##     ##       ##     #######   #######  ##     ##       ##    #### ##     ## ######## ####
-)
+print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 
 # Clear terminal screen after 3 seconds
 time.sleep(3)
@@ -251,5 +243,9 @@ while True:
             f"An error occurred while uploading data to {worksheet2.title}: {str(e)}\n")
         print("Please fill out the form again. If error persists refresh.\n")
 
+# Clear terminal screen after 3 seconds
+time.sleep(3)
+os.system('cls' if os.name == 'nt' else 'clear')
+
 # Display goodbye message
-print(f"Thank you {first_name}. We appreciate your feedback\n")
+print(f"Thank you {first_name}. We appreciate your feedback!\n")
