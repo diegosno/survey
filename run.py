@@ -80,11 +80,11 @@ def get_personal_data():
 
 # Get user's gender
     while True:
-        gender = input('Enter your gender m(male)/f(female)/o(other)):\n')
-        if gender in ['m', 'f', 'o']:
+        gender = input('Enter your gender (woman/man/other):\n').lower()
+        if gender in ['woman', 'man', 'other']:
             break
         else:
-            print('INVALID: Value should be m, f, or o\n')
+            print('INVALID: Value should be woman, man, or other\n')
 
 # Get user's country
     while True:
@@ -121,7 +121,7 @@ while True:
 # Display thank you message
 print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 
-# Clear terminal screen after seconds
+# Clear terminal screen after 3 seconds
 time.sleep(3)
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -129,81 +129,73 @@ os.system('cls' if os.name == 'nt' else 'clear')
 def get_survey_responses():
     """
     Prompts the user to answer the survey questions. 
-    Returns data as a dictionary.
+    Returns data stored in variables.
     """
+
    # Question 1
-    while True:
-        quality = input(
-            "How satisfied are you with the product's quality? (1-5)\n")
-        if quality.isdigit() and 1 <= int(quality) <= 5:
-            if quality == "5":
-                print("We are glad to hear!\n")
-            elif quality in ["3", "4"]:
-                print("We will do better!\n")
-            else:
-                print("Sad to hear! Contact us so we find a solution.\n")
-            break
-        else:
-            print("INVALID: Enter a valid number between 1 and 5.\n")
+    quality = input(
+        "How satisfied are you with the product's quality? (1-5)\n")
+
+    while not quality.isdigit() or int(quality) not in range(1, 6):
+        print("INVALID: Enter a valid number between 1 and 5.\n")
+        quality = input()
+
+    if quality == "5":
+        print("We are glad to hear!\n")
+    elif quality in ["3", "4"]:
+        print("We will do better!\n")
+    else:
+        print("Sad to hear! Contact us so we find a solution.\n")
 
     # Question 2
-    while True:
-        recommend = input(
-            "Would you recommend this product to others? (Yes/No)\n")
-        if recommend.lower() == 'yes':
-            print("Awesome!")
-            break
-        elif recommend.lower() == 'no':
-            print("Sad to hear! Contact us so we find a solution.\n")
-            break
-        else:
-            print("INVALID: Answer must be Yes or No.\n")
+    recommend = input("Would you recommend this product to others? (Yes/No)\n")
+
+    while recommend.lower() not in ['yes', 'no']:
+        print("INVALID: Answer must be Yes or No.\n")
+        recommend = input()
+
+    if recommend.lower() == 'yes':
+        print("Awesome!")
+    else:
+        print("Sad to hear! Contact us so we find a solution.\n")
 
     # Question 3
-    while True:
-        expectations = input("Did the product meet your expectations? (1-5)\n")
-        if expectations.isdigit() and 1 <= int(expectations) <= 5:
-            if expectations == "5":
-                print("We are glad to hear that!\n")
-            elif expectations in ["3", "4"]:
-                print("We will do better!\n")
-            else:
-                print("Sad to hear! Contact us so we find a solution.\n")
-            break
-        else:
-            print("INVALID: Enter a valid number between 1 and 5.\n")
+    expectations = input("Did the product meet your expectations? (1-5)\n")
+    while not (expectations.isdigit() and 1 <= int(expectations) <= 5):
+        print("INVALID: Enter a valid number between 1 and 5.\n")
+        expectations = input()
+    if expectations == "5":
+        print("We are glad to hear that!\n")
+    elif expectations in ["3", "4"]:
+        print("We will do better!\n")
+    else:
+        print("Sad to hear! Contact us so we find a solution.\n")
 
     # Question 4
-    while True:
-        frequency = input(
-            "How often do you use the product? (daily, weekly, monthly)\n")
-        if frequency.lower() in ['daily', 'weekly', 'monthly']:
-            break
-        else:
-            print("INVALID: Please enter either daily, weekly, or monthly.\n")
+    frequency = input(
+        "How often do you use the product? (daily, weekly, monthly)\n")
+    while not frequency.lower() in ['daily', 'weekly', 'monthly']:
+        print("INVALID: Please enter either daily, weekly, or monthly.\n")
+        frequency = input()
 
     # Question 5
-    while True:
-        price_value = input(
-            "How was the price compared to the product's value? (excellent, good, bad)\n")
-        if price_value.lower() in ['excellent', 'good']:
-            print("We're glad to hear that!\n")
-            break
-        elif price_value.lower() == 'bad':
-            print("Sad to hear! Contact us so we find a solution.\n")
-            break
-        else:
-            print("INVALID: Please enter either excellent, good, or bad.\n")
+    price_value = input(
+        "How was the price compared to the product's value? (excellent, good, bad)\n")
+    while not price_value.lower() in ['excellent', 'good', 'bad']:
+        print("INVALID: Please enter either excellent, good, or bad.\n")
+        price_value = input()
+
+    if price_value.lower() in ['excellent', 'good']:
+        print("We're glad to hear that!\n")
+    else:
+        print("Sad to hear! Contact us so we find a solution.\n")
 
     # Question 6
-    while True:
-        features = input(
-            "How important were missing features in your purchase decision? (very important, not very important, not important)\n")
-        if features.lower() in ['very important', 'not very important', 'not important']:
-            break
-        else:
-            print(
-                "INVALID: Please enter either very important, not very important, or not important.\n")
+    features = input(
+        "How important were missing features in your purchase decision? (very important, not very important, not important)\n")
+    while not features.lower() in ['very important', 'not very important', 'not important']:
+        print("INVALID: Please enter either very important, not very important, or not important.\n")
+        features = input()
 
     return quality, recommend, expectations, frequency, price_value, features
 
