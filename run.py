@@ -106,6 +106,7 @@ def get_personal_data():
 print(welcome)
 print(main_message)
 
+
 user_input = input().lower()
 
 while user_input not in ["client", "employee"]:
@@ -113,7 +114,7 @@ while user_input not in ["client", "employee"]:
     user_input = input().lower()
 os.system('cls' if os.name == 'nt' else 'clear')
 if user_input == "client":
-    get_personal_data()
+    first_name, last_name, age, email, gender, country = get_personal_data()
 elif user_input == "employee":
     access_data()
 
@@ -123,7 +124,6 @@ while True:
     """
     Uploads personal data to a specified worksheet in Google Sheets.
     """
-    first_name, last_name, age, email, gender, country = get_personal_data()
 
     try:
         print(f"Uploading data to {worksheet.title}...\n")
@@ -138,7 +138,15 @@ while True:
 
 
 # Display thank you message
-print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
+print(
+    ######## ##     ##    ###    ##    ## ##    ##  ######     ########  #######  ########     ##    ##  #######  ##     ## ########     ######## #### ##     ## ######## ####
+    ##    ##     ##   ## ##   ###   ## ##   ##  ##    ##    ##       ##     ## ##     ##     ##  ##  ##     ## ##     ## ##     ##       ##     ##  ###   ### ##       ####
+    ##    ##     ##  ##   ##  ####  ## ##  ##   ##          ##       ##     ## ##     ##      ####   ##     ## ##     ## ##     ##       ##     ##  #### #### ##       ####
+    ##    ######### ##     ## ## ## ## #####     ######     ######   ##     ## ########        ##    ##     ## ##     ## ########        ##     ##  ## ### ## ######    ##
+    ##    ##     ## ######### ##  #### ##  ##         ##    ##       ##     ## ##   ##         ##    ##     ## ##     ## ##   ##         ##     ##  ##     ## ##
+    ##    ##     ## ##     ## ##   ### ##   ##  ##    ##    ##       ##     ## ##    ##        ##    ##     ## ##     ## ##    ##        ##     ##  ##     ## ##       ####
+    ##    ##     ## ##     ## ##    ## ##    ##  ######     ##        #######  ##     ##       ##     #######   #######  ##     ##       ##    #### ##     ## ######## ####
+)
 
 # Clear terminal screen after 3 seconds
 time.sleep(3)
@@ -146,7 +154,7 @@ os.system('cls' if os.name == 'nt' else 'clear')
 
 
 # Survey message
-print(f"Thank you {first_name}. Please complete the following survey:\n")
+print("Please complete the following survey\n")
 
 
 # Define function to get survey responses
