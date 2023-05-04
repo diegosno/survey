@@ -24,21 +24,21 @@ worksheet2 = SHEET.worksheet('Survey Responses')
 
 
 # Define welcome page strings
-welcome_message = "Welcome to our product's survey\n"
-instructions = "Please enter your details\n"
+welcome = "Welcome!\n"
+main_message = "Are you a client or an employee?\n"
+welcome_message = "Welcome to our survey\n"
+instructions = "Please enter your personal data\n"
 
-# Print the welcome message to the console
-print(welcome_message)
-print(instructions)
 
 # Define function to get personal data from the user
-
-
 def get_personal_data():
     """
     Prompts the user to enter personal data. 
     Returns a dictionary containing first_name, last_name, age, email, gender, country.
     """
+    # Personal data welcome page
+    print(instructions)
+
     # Loop until valid input is entered for each field
     # Get user's first name
     first_name = input('Enter your first name:\n')
@@ -80,7 +80,7 @@ def get_personal_data():
             email = input()
 
 # Get user's gender
-    gender = input('Enter your gender (woman/man/other):\n').lower()
+    gender = input('Enter your gender (woman/man/other):\n')
     while True:
         if gender in ['woman', 'man', 'other']:
             break
@@ -100,6 +100,22 @@ def get_personal_data():
 
 # Return the user's personal data
     return first_name, last_name, age, email, gender, country
+
+
+# Initial page
+print(welcome)
+print(main_message)
+
+user_input = input().lower()
+
+while user_input not in ["client", "employee"]:
+    print("INVALID: Enter either 'client' or 'employee'.")
+    user_input = input().lower()
+os.system('cls' if os.name == 'nt' else 'clear')
+if user_input == "client":
+    get_personal_data()
+elif user_input == "employee":
+    access_data()
 
 
 # Loop until personal data is successfully uploaded to the worksheet
@@ -127,6 +143,7 @@ print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 # Clear terminal screen after 3 seconds
 time.sleep(3)
 os.system('cls' if os.name == 'nt' else 'clear')
+
 
 # Survey message
 print(f"Thank you {first_name}. Please complete the following survey:\n")
@@ -227,5 +244,4 @@ while True:
         print("Please fill out the form again. If error persists refresh.\n")
 
 # Display goodbye message
-
 print(f"Thank you {first_name}. We appreciate your feedback\n")
