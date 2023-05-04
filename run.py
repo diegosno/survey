@@ -4,6 +4,7 @@ from google.oauth2.service_account import Credentials
 import os
 import time
 import random
+from pprint import pprint
 
 
 # Define API access scopes
@@ -22,6 +23,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Survey')
 worksheet = SHEET.worksheet('Personal Data')
 worksheet2 = SHEET.worksheet('Survey Responses')
+worksheet3 = SHEET.worksheet('Employee Data')
 
 
 # Define welcome page strings
@@ -101,6 +103,18 @@ def get_personal_data():
 
 # Return the user's personal data
     return first_name, last_name, age, email, gender, country
+
+
+def employee_login():
+    employee_number = input('Do you have an employee number?(Yes/No)\n')
+    while employee_number.lower() not in ['yes', 'no']:
+        print("INVALID: Answer must be Yes or No.\n")
+        employee_number = input()
+
+    if employee_number.lower() == 'yes':
+        employee_number = input('Enter your employee number: ')
+    else:
+        employee_number = random.randint(0, 99999)
 
 
 # Initial page
