@@ -1,7 +1,8 @@
 # Import required libraries
 import gspread
 from google.oauth2.service_account import Credentials
-import tkinter
+import os
+import time
 
 
 # Define API access scopes
@@ -18,10 +19,9 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 
 # Access Google Sheets spreadsheet
 SHEET = GSPREAD_CLIENT.open('Survey')
-
-
 worksheet = SHEET.worksheet('Personal Data')
 worksheet2 = SHEET.worksheet('Survey Responses')
+
 
 # Define welcome page strings
 welcome_message = "Welcome to our product's survey\n"
@@ -120,6 +120,10 @@ while True:
 
 # Display thank you message
 print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
+
+# Clear terminal screen after seconds
+time.sleep(3)
+os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def get_survey_responses():
