@@ -3,8 +3,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import os
 import time
-import random
-from pprint import pprint
 
 
 # Define API access scopes
@@ -23,25 +21,24 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Survey')
 worksheet = SHEET.worksheet('Personal Data')
 worksheet2 = SHEET.worksheet('Survey Responses')
-worksheet3 = SHEET.worksheet('Employee Data')
 
 
 # Define welcome page strings
-welcome = "Welcome!\n"
-main_message = "Are you a client or an employee?\n"
-welcome_message = "Welcome to our survey\n"
-instructions = "Please enter your personal data\n"
+welcome_message = "Welcome to our product's survey\n"
+instructions = "Please enter your details\n"
 
+# Print the welcome message to the console
+print(welcome_message)
+print(instructions)
 
 # Define function to get personal data from the user
+
+
 def get_personal_data():
     """
     Prompts the user to enter personal data. 
     Returns a dictionary containing first_name, last_name, age, email, gender, country.
     """
-    # Personal data welcome page
-    print(instructions)
-
     # Loop until valid input is entered for each field
     # Get user's first name
     first_name = input('Enter your first name:\n')
@@ -83,7 +80,7 @@ def get_personal_data():
             email = input()
 
 # Get user's gender
-    gender = input('Enter your gender (woman/man/other):\n')
+    gender = input('Enter your gender (woman/man/other):\n').lower()
     while True:
         if gender in ['woman', 'man', 'other']:
             break
@@ -105,39 +102,12 @@ def get_personal_data():
     return first_name, last_name, age, email, gender, country
 
 
-def employee_login():
-    employee_number = input('Do you have an employee number?(Yes/No)\n')
-    while employee_number.lower() not in ['yes', 'no']:
-        print("INVALID: Answer must be Yes or No.\n")
-        employee_number = input()
-
-    if employee_number.lower() == 'yes':
-        employee_number = input('Enter your employee number: ')
-    else:
-        employee_number = random.randint(0, 99999)
-
-
-# Initial page
-print(welcome)
-print(main_message)
-
-user_input = input().lower()
-
-while user_input not in ["client", "employee"]:
-    print("INVALID: Enter either 'client' or 'employee'.")
-    user_input = input().lower()
-os.system('cls' if os.name == 'nt' else 'clear')
-if user_input == "client":
-    first_name, last_name, age, email, gender, country = get_personal_data()
-elif user_input == "employee":
-    employee_login()
-
-
 # Loop until personal data is successfully uploaded to the worksheet
 while True:
     """
     Uploads personal data to a specified worksheet in Google Sheets.
     """
+    first_name, last_name, age, email, gender, country = get_personal_data()
 
     try:
         print(f"Uploading data to {worksheet.title}...\n")
@@ -158,9 +128,8 @@ print(f"Thank you {first_name}. You are now being redirected to our survey.\n")
 time.sleep(3)
 os.system('cls' if os.name == 'nt' else 'clear')
 
-
 # Survey message
-print("Please complete the following survey\n")
+print(f"Thank you {first_name}. Please complete the following survey:\n")
 
 
 # Define function to get survey responses
@@ -257,9 +226,6 @@ while True:
             f"An error occurred while uploading data to {worksheet2.title}: {str(e)}\n")
         print("Please fill out the form again. If error persists refresh.\n")
 
-# Clear terminal screen after 3 seconds
-time.sleep(3)
-os.system('cls' if os.name == 'nt' else 'clear')
 
 # Display goodbye message
-print(f"Thank you {first_name}. We appreciate your feedback!\n")
+print(f"Thank you {first_name}. We appreciate your feedback\n")
